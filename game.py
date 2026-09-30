@@ -2,11 +2,13 @@ import random
 from collections import deque
 
 import pygame
+import math
 
 TILE, COLS, ROWS = 32, 20, 14
 WIDTH, HEIGHT = COLS * TILE, ROWS * TILE + 36
 DIRS = {pygame.K_UP: (-1, 0), pygame.K_DOWN: (1, 0), pygame.K_LEFT: (0, -1), pygame.K_RIGHT: (0, 1)}
 MOVE_DELAY, ENEMY_DELAY, PUMP_RANGE, DEFLATE_AFTER = 0.11, 0.35, 3, 1.5
+POP_PARTICLES = []
 
 
 def dirt_color(row):
@@ -24,12 +26,25 @@ def dirt_color(row):
 
 def on_enemy_popped(enemy, score):
     """Called when an enemy is popped; add particles, bonus points, or a colour flash here."""
-    pass
+    r, c = enemy.cell
+    x = c * TILE + TILE // 2
+    y = r * TILE + TILE // 2
+
+    for _ in range(10):
+        angle = random.uniform(0, math.tau)
+        speed = random.uniform(25, 50)
+        POP_PARTICLES.append([
+            x,
+            y,
+            math.cos(angle) * speed,
+            math.sin(angle) * speed,
+            0.35
+        ])
 
 
 def enemy_speed_multiplier(level):
     """Return a speed multiplier for enemies at the given level, or None for the default speed."""
-    pass
+    return 1 + 0.1 * level
 
 
 def in_bounds(r, c):
