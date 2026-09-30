@@ -89,3 +89,9 @@ Submission is only the following three things:
 - [] A 10-second video of gameplay **before** your changes, showing the bug/broken behavior
 - [] A 10-second video of gameplay **after** your changes, showing the bug fixed and the new features working
 - [] The Chat/LLM used page link, with the complete chat history
+## Implementation Status
+
+- Task 1: Fixed BFS enemy pathfinding using FIFO queue behavior.
+- Task 2: Implemented depth-based dirt color bands.
+- Task 3: Added a visible particle effect when an enemy is popped.
+- Task 4: Added level-based enemy speed scaling.
